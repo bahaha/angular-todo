@@ -36,3 +36,19 @@
   border-radius: $radius;
   background-clip: padding-box;  /* stops bg color from leaking outside the border: */
 }
+@mixin screen_between($min: 0, $max: 0) {
+  @if $max == 0 {
+    @media screen and (min-width: $min) {
+      @content
+    }
+  } @else {
+    @media screen and (min-width: $min) and (max-width: $max - 1px) {
+      @content
+    }
+  }
+}
+@mixin overflow-dots(){
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

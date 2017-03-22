@@ -7,10 +7,12 @@
 html, body {
   width: 100%;
   height: 100%;
+  margin: 0;
   background-color: #F5F5F5;
 }
 a {
   cursor: pointer;
+  text-decoration: none;
 }
 
 div.todo_app {
@@ -89,6 +91,10 @@ section {
         display: inline-block;
         color: #4D4D4D;
         @include word-break(break-all);
+        @include screen_between(0, 200px) {
+          width: 80px;
+          @include overflow-dots();
+        }
       }
     }
   }
@@ -100,7 +106,6 @@ section {
     display: inline-block;
     width: 100%;
     > nav {
-      width: 95%;
       max-width: $app_width - 40px;
       margin: 0 auto;
       text-align: center;
@@ -109,17 +114,38 @@ section {
         height: $footer_height;
         line-height: $footer_height;
       }
-      > div.item_left {
-        float: left;
-      }
-
       > div.filters {
         display: inline-block;
         text-align: center;
-        > a {
-          margin: 0 10px;
-          text-decoration: none;
+      }
 
+      @include screen_between(0, 360px) {
+        width: 100%;
+        padding-bottom: 22px;
+        > div.filters {
+          width: 100%;
+          > a {
+            display: block;
+            width: 100%;
+            &.active {
+              background-color: rgba(239, 213, 213, .5);
+            }
+          }
+        }
+        > a.clear_complete {
+          display: block;
+        }
+      }
+      @include screen_between(360px) {
+        width: 95%;
+        > div.item_left {
+          float: left;
+        }
+        > a.clear_complete {
+          float: right;
+        }
+        > div.filters > a {
+          margin: 0 10px;
           &.active {
             border: 1px solid #EFD5D5;
             padding: 5px;
@@ -128,9 +154,6 @@ section {
         }
       }
 
-      > a.clear_complete {
-        float: right;
-      }
     }
     @include box-shadow(0 1px 1px rgba(0, 0, 0, 0.2), 0 8px 0 -3px #f6f6f6, 0 9px 1px -3px rgba(0, 0, 0, 0.2), 0 16px 0 -6px #f6f6f6, 0 17px 2px -6px rgba(0, 0, 0, 0.2));
   }
