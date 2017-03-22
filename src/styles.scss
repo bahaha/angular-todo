@@ -1,1 +1,142 @@
 /* You can add global styles to this file, and also import other style files */
+@import "mixins";
+@import "variables";
+*, *:before, *:after {
+  @include border-box();
+}
+html, body {
+  width: 100%;
+  height: 100%;
+  background-color: #F5F5F5;
+}
+a {
+  cursor: pointer;
+}
+
+div.todo_app {
+  display: block;
+  width: 100%;
+  max-width: $app_width;
+  margin: 0 auto;
+  text-align: center;
+}
+
+header {
+  label.title {
+    color: #EBDADA;
+    font-size: 56px;
+    font-weight: 100;
+  }
+}
+
+section {
+  @include box-shadow(0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1));
+  > * {
+    width: 100%;
+  }
+  header {
+    position: relative;
+    top: 0;
+    left: 0;
+    label {
+      position: absolute;
+      color: $input_color;
+      width: 50px;
+      font-size: 24px;
+      height: $input_height;
+      line-height: $input_height;
+      cursor: pointer;
+    }
+    input {
+      font-size: 1.2em;
+      width: 100%;
+      color: $item_color;
+      height: $input_height;
+      line-height: $input_height;
+      padding: 5px 5px 5px 50px;
+      @include placeholder-color($input_color);
+      &, &:focus {
+        outline: 0;
+      }
+    }
+  }
+
+  section.items {
+    text-align: left;
+    div.item {
+      height: $input_height;
+      line-height: $input_height;
+      background-color: #FFFFFF;
+      border-bottom: 1px solid $input_color;
+      vertical-align: middle;
+
+      span.checkbox_wrapper {
+        display: inline-block;
+        width: 50px;
+        height: $input_height;
+        line-height: $input_height;
+        text-align: center;
+        input[type=checkbox] {
+          outline: none;
+          @include appearance(none);
+          &:after {
+            content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="-10 -18 100 135"><circle cx="50" cy="50" r="50" fill="none" stroke="#bddad5" stroke-width="3"/><path fill="#5dc2af" d="M72 25L42 71 27 56l-4 4 20 20 34-52z"/></svg>')
+          }
+        }
+      }
+      > label {
+        position: absolute;
+        display: inline-block;
+        color: #4D4D4D;
+        @include word-break(break-all);
+      }
+    }
+  }
+
+  footer {
+    font-size: 13px;
+    color: #858585;
+    background-color: #FFFFFF;
+    display: inline-block;
+    width: 100%;
+    > nav {
+      width: 95%;
+      max-width: $app_width - 40px;
+      margin: 0 auto;
+      text-align: center;
+      clear: both;
+      * {
+        height: $footer_height;
+        line-height: $footer_height;
+      }
+      > div.item_left {
+        float: left;
+      }
+
+      > div.filters {
+        display: inline-block;
+        text-align: center;
+        > a {
+          margin: 0 10px;
+          text-decoration: none;
+
+          &.active {
+            border: 1px solid #EFD5D5;
+            padding: 5px;
+            @include border-radius(3px);
+          }
+        }
+      }
+
+      > a.clear_complete {
+        float: right;
+      }
+    }
+    @include box-shadow(0 1px 1px rgba(0, 0, 0, 0.2), 0 8px 0 -3px #f6f6f6, 0 9px 1px -3px rgba(0, 0, 0, 0.2), 0 16px 0 -6px #f6f6f6, 0 17px 2px -6px rgba(0, 0, 0, 0.2));
+  }
+}
+
+div.todo_app > footer {
+  margin-top: 65px;
+  color: #C4C4C4;
+}

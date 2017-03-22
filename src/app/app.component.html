@@ -1,3 +1,39 @@
-<h1>
-  {{title}}
-</h1>
+<div class="todo_app">
+  <header>
+    <label class="title">Todos</label>
+  </header>
+  <section>
+    <header>
+      <label for="new_todo">v</label>
+      <input id="new_todo" type="text" placeholder="What needs to be done?" />
+    </header>
+    <section class="items">
+      <div class="item">
+        <span class="checkbox_wrapper">
+          <input type="checkbox" />
+        </span>
+        <label>Taste Javascript</label>
+      </div>
+      <div class="item">
+        <span class="checkbox_wrapper">
+          <input type="checkbox" />
+        </span>
+        <label>Buy a unicorn</label>
+      </div>
+    </section>
+    <footer>
+      <nav>
+        <div class="item_left">1 items left</div>
+        <a class="clear_complete">Clear completed</a>
+        <div class="filters">
+          <a class="active">All</a>
+          <a>Active</a>
+          <a>Completed</a>
+        </div>
+      </nav>
+    </footer>
+  </section>
+  <footer>
+    Some Information
+  </footer>
+</div>
