@@ -47,8 +47,21 @@
     }
   }
 }
-@mixin overflow-dots(){
+@mixin overflow-dots() {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+@mixin flex-direction($direction) {
+  flex-direction: $direction;
+  -ms-flex-direction: $direction;
+  -webkit-flex-direction: $direction;
+}
+@mixin display-flex() {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
 }
