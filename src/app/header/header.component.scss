@@ -1,0 +1,10 @@
+@import "../../mixins";
+header {
+  @include display-flex();
+  justify-content: center;
+  label.title {
+    color: #EBDADA;
+    font-size: 56px;
+    font-weight: 100;
+  }
+}

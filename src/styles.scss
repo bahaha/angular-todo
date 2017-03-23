@@ -26,16 +26,6 @@ div.todo_app {
   flex-direction: column;
 }
 
-header {
-  @include display-flex();
-  justify-content: center;
-  label.title {
-    color: #EBDADA;
-    font-size: 56px;
-    font-weight: 100;
-  }
-}
-
 section {
   @include box-shadow(0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1));
 
