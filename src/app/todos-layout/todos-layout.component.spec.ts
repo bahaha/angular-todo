@@ -43,5 +43,14 @@ describe('TodosLayoutComponent', () => {
       component.todos = ['Buy a unicorn'];
       expect(component.empty()).toBeFalsy();
     });
-  })
+  });
+
+  it('should add todo item to list when receive addTodo event', () => {
+    const todo = 'Buy a unicorn';
+    component.todos = [];
+    expect(component.empty()).toBeTruthy();
+    component.addTodo(todo);
+    expect(component.todos).toContain(todo);
+    expect(component.empty()).toBeFalsy();
+  });
 });

@@ -1,5 +1,8 @@
 <section>
-  <todo-input [placeholder]="placeholder" [emptyTodos]="empty()"></todo-input>
+  <todo-input
+    [placeholder]="placeholder"
+    [emptyTodos]="empty()"
+    (submitTodo)="addTodo($event)"></todo-input>
   <section class="items">
     <div class="item">
         <span class="checkbox_wrapper">
