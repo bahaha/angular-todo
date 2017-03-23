@@ -1,14 +1,15 @@
 import { Component, OnInit } from '@angular/core';
+import {Todo} from "../model";
 
 @Component({
   selector: 'todos-layout',
-  templateUrl: './todos-layout.component.html',
-  styleUrls: ['./todos-layout.component.scss'],
+  templateUrl: 'todos-layout.component.html',
+  styleUrls: ['todos-layout.component.scss'],
 
 })
 export class TodosLayoutComponent implements OnInit {
   placeholder = 'What needs to be done?';
-  todos: string[] = [];
+  todos: Todo[] = [];
   constructor() { }
 
   ngOnInit() {
@@ -19,6 +20,9 @@ export class TodosLayoutComponent implements OnInit {
   }
 
   addTodo(todo: string) {
-    this.todos = [...this.todos, todo];
+    this.todos = [...this.todos, {
+      text: todo,
+      isCompleted: false,
+    }];
   }
 }

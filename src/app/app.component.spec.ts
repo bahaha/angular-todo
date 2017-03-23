@@ -3,8 +3,8 @@ import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import {HeaderComponent} from "./header/header.component";
 import {FooterComponent} from "./footer/footer.component";
-import {TodosLayoutComponent} from "./todos-layout/todos-layout.component";
-import {TodoInputComponent} from "./todo-input/todo-input.component";
+import {TodosLayoutComponent} from "./todos/todos-layout/todos-layout.component";
+import {TodoInputComponent} from "./todos/todo-input/todo-input.component";
 import {ReactiveFormsModule} from "@angular/forms";
 
 describe('AppComponent', () => {

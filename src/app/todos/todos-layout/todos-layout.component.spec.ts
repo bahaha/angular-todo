@@ -40,7 +40,10 @@ describe('TodosLayoutComponent', () => {
       expect(component.empty()).toBeTruthy();
     });
     it('should return false if there are some todos.', () => {
-      component.todos = ['Buy a unicorn'];
+      component.todos = [{
+        text: 'Buy a unicorn',
+        isCompleted: false,
+      }];
       expect(component.empty()).toBeFalsy();
     });
   });
@@ -50,7 +53,10 @@ describe('TodosLayoutComponent', () => {
     component.todos = [];
     expect(component.empty()).toBeTruthy();
     component.addTodo(todo);
-    expect(component.todos).toContain(todo);
+    expect(component.todos).toContain({
+      text: todo,
+      isCompleted: false,
+    });
     expect(component.empty()).toBeFalsy();
   });
 });

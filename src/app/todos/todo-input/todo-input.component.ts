@@ -3,8 +3,8 @@ import {FormControl, FormBuilder, Validators} from "@angular/forms";
 
 @Component({
   selector: 'todo-input',
-  templateUrl: './todo-input.component.html',
-  styleUrls: ['./todo-input.component.scss'],
+  templateUrl: 'todo-input.component.html',
+  styleUrls: ['todo-input.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TodoInputComponent implements OnInit{
