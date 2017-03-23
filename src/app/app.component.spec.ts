@@ -3,6 +3,7 @@ import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import {HeaderComponent} from "./header/header.component";
 import {FooterComponent} from "./footer/footer.component";
+import {TodosLayoutComponent} from "./todos-layout/todos-layout.component";
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -10,6 +11,7 @@ describe('AppComponent', () => {
       declarations: [
         AppComponent,
         HeaderComponent,
+        TodosLayoutComponent,
         FooterComponent,
       ],
     }).compileComponents();
