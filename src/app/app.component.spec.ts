@@ -4,14 +4,18 @@ import { AppComponent } from './app.component';
 import {HeaderComponent} from "./header/header.component";
 import {FooterComponent} from "./footer/footer.component";
 import {TodosLayoutComponent} from "./todos-layout/todos-layout.component";
+import {TodoInputComponent} from "./todo-input/todo-input.component";
+import {ReactiveFormsModule} from "@angular/forms";
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [ ReactiveFormsModule ],
       declarations: [
         AppComponent,
         HeaderComponent,
         TodosLayoutComponent,
+        TodoInputComponent,
         FooterComponent,
       ],
     }).compileComponents();

@@ -4,35 +4,6 @@
 section {
   @include box-shadow(0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1));
 
-  header {
-    @include display-flex();
-    justify-content: flex-start;
-    background-color: #fff;
-    border-bottom: 1px solid #E7E7E7;
-    height: $input_height;
-    line-height: $input_height;
-
-    label {
-      @include display-flex();
-      justify-content: center;
-      color: $input_color;
-      width: 50px;
-      font-size: 24px;
-      cursor: pointer;
-    }
-    input {
-      @include display-flex();
-      flex: 1;
-      font-size: 1.2em;
-      color: $item_color;
-      @include placeholder-color($input_color);
-      &, &:focus {
-        border: none;
-        outline: 0;
-      }
-    }
-  }
-
   section.items {
     div.item {
       @include display-flex();

@@ -1,8 +1,5 @@
 <section>
-  <header>
-    <label for="new_todo">v</label>
-    <input id="new_todo" type="text" placeholder="What needs to be done?" />
-  </header>
+  <todo-input [placeholder]="placeholder" [emptyTodos]="empty()"></todo-input>
   <section class="items">
     <div class="item">
         <span class="checkbox_wrapper">

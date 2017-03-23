@@ -1,0 +1,8 @@
+<header>
+  <label for="new_todo"
+          [ngClass]="{'empty': emptyTodos}">v</label>
+  <input id="new_todo" type="text"
+         placeholder="{{placeholder}}"
+         [formControl]="newTodo"
+         (keyup.enter)="addTodo(newTodo)" />
+</header>
