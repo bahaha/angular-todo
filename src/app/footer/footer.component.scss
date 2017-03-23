@@ -1,0 +1,8 @@
+@import "../../mixins";
+
+:host {
+  @include display-flex();
+  justify-content: center;
+  margin-top: 65px;
+  color: #C4C4C4;
+}
