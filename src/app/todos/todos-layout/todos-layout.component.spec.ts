@@ -46,7 +46,7 @@ describe('TodosLayoutComponent', () => {
       expect(todoItems).not.toBeNull();
     });
     it('footer functions if there are some todos', () => {
-      component.todos = [{text: '1', isCompleted: false}];
+      component.todos = [{id: 0, text: '1', isCompleted: false}];
       fixture.detectChanges();
       const compiled = fixture.debugElement.nativeElement;
       const functions = compiled.querySelector('todo-footer');
@@ -66,6 +66,7 @@ describe('TodosLayoutComponent', () => {
     });
     it('should return false if there are some todos.', () => {
       component.todos = [{
+        id: 0,
         text: 'Buy a unicorn',
         isCompleted: false,
       }];
@@ -77,8 +78,9 @@ describe('TodosLayoutComponent', () => {
     const todo = 'Buy a unicorn';
     component.todos = [];
     expect(component.empty()).toBeTruthy();
-    component.addTodo(todo);
+    component.addTodo(todo, 0);
     expect(component.todos).toContain({
+      id: 0,
       text: todo,
       isCompleted: false,
     });
@@ -87,10 +89,10 @@ describe('TodosLayoutComponent', () => {
 
   it('should toggle item completed state when receive toggleTodo event', () => {
     component.todos = [
-      {text: '1', isCompleted: false},
-      {text: '2', isCompleted: false},
-      {text: '3', isCompleted: true},
-      {text: '4', isCompleted: false},
+      {id: 0, text: '1', isCompleted: false},
+      {id: 1, text: '2', isCompleted: false},
+      {id: 2, text: '3', isCompleted: true},
+      {id: 3, text: '4', isCompleted: false},
     ];
     component.toggleTodo(0);
     expect(component.todos[0].isCompleted).toBeTruthy();
@@ -104,8 +106,8 @@ describe('TodosLayoutComponent', () => {
 
   it('should remove completed items when receive a clear completed event', () => {
     const todos = [
-      {text: '1', isCompleted: false},
-      {text: '2', isCompleted: true},
+      {id: 0, text: '1', isCompleted: false},
+      {id: 1, text: '2', isCompleted: true},
     ];
     component.todos = todos;
     component.clearCompleted();

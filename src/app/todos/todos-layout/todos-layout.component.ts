@@ -23,8 +23,9 @@ export class TodosLayoutComponent implements OnInit {
     return this.todos.length === 0;
   }
 
-  addTodo(todo: string) {
+  addTodo(todo: string, id: number = Date.now()) {
     this.todos = [...this.todos, {
+      id: id,
       text: todo,
       isCompleted: false,
     }];

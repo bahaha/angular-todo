@@ -26,7 +26,7 @@ describe('TodoListComponent', () => {
   it('should render todo items from todos array', () => {
     const item1 = 'Vanilla Js';
     const item2 = 'Buy a unicorn';
-    component.todos = [item1, item2].map(text => ({text, isCompleted: false}));
+    component.todos = [item1, item2].map((text: string, id: number) => ({id, text, isCompleted: false}));
     fixture.detectChanges();
 
     const compiled = fixture.debugElement.nativeElement;

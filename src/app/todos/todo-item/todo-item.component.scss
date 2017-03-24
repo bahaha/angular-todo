@@ -28,7 +28,7 @@ div.item {
       width: 80px;
       @include overflow-dots();
     }
-    @include transition(color 2s);
+    @include transition(color .4s);
   }
 
   &.completed {

@@ -1,5 +1,5 @@
 <section class="items">
-    <todo-item *ngFor="let todo of todos, let idx = index"
+    <todo-item *ngFor="let todo of todos, let idx = index; trackBy: byId"
                [index]="idx"
                [text]="todo.text"
                [isCompleted]="todo.isCompleted"
