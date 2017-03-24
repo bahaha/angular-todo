@@ -1,6 +1,7 @@
 <section class="items">
     <todo-item *ngFor="let todo of todos, let idx = index"
                [index]="idx"
-               [item]="todo"
+               [text]="todo.text"
+               [isCompleted]="todo.isCompleted"
               (toggle)="toggle.emit($event)"></todo-item>
 </section>

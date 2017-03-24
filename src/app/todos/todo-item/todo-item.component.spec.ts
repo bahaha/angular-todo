@@ -23,7 +23,8 @@ describe('TodoItemComponent', () => {
   describe('should render', () => {
     const render = (todo: Todo) => {
       component.index = 0;
-      component.item = todo;
+      component.text = todo.text;
+      component.isCompleted = todo.isCompleted;
       fixture.detectChanges();
 
       return fixture.debugElement.nativeElement;
@@ -53,7 +54,7 @@ describe('TodoItemComponent', () => {
     let itemIndex = null;
     component.toggle.subscribe(idx => itemIndex = idx);
 
-    component.toggleItemStatus();
+    component.toggleItemStatus(component.index);
     expect(itemIndex).toBe(component.index);
   });
 

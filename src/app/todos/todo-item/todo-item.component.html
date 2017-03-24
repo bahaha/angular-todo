@@ -1,8 +1,8 @@
-<div class="item"  [ngClass]="{'completed': item.isCompleted}">
+<div class="item"  [ngClass]="{'completed': isCompleted}">
   <span class="checkbox_wrapper">
     <input type="checkbox"
-           [attr.checked]="item.isCompleted ? 'checked': null"
-           (click)="toggleItemStatus()"/>
+           [attr.checked]="isCompleted ? 'checked': null"
+           (click)="toggleItemStatus(index)"/>
   </span>
-  <label>{{item.text}}</label>
+  <label>{{text}}</label>
 </div>

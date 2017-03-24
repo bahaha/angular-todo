@@ -9,10 +9,11 @@ import {Todo} from "../model";
 })
 export class TodoItemComponent {
   @Input() index: number;
-  @Input() item: Todo;
+  @Input() text: string;
+  @Input() isCompleted: boolean;
   @Output() toggle: EventEmitter<number> = new EventEmitter();
 
-  toggleItemStatus() {
-    this.toggle.emit(this.index);
+  toggleItemStatus(index) {
+    this.toggle.emit(index);
   }
 }
