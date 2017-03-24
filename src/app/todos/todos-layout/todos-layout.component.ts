@@ -1,16 +1,20 @@
 import {Component, OnInit, ChangeDetectionStrategy} from '@angular/core';
-import {Todo} from "../model";
+import {Todo, Filters, filterTypes} from "../model";
+import {FilterPipe} from "./filter.pipe";
 
 @Component({
   selector: 'todos-layout',
   templateUrl: 'todos-layout.component.html',
   styleUrls: ['todos-layout.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [FilterPipe]
 })
 export class TodosLayoutComponent implements OnInit {
   placeholder = 'What needs to be done?';
   todos: Todo[] = [];
-  constructor() { }
+  private filterType: Filters;
+
+  constructor(private filterPipe: FilterPipe) { }
 
   ngOnInit() {
   }
@@ -34,16 +38,20 @@ export class TodosLayoutComponent implements OnInit {
     ];
   }
 
+  changeFilterType(type: Filters) {
+    this.filterType = type;
+  }
+
   clearCompleted() {
-    this.todos = this.todos.filter(todo => !todo.isCompleted);
+    this.todos = this.filterPipe.transform(this.todos, filterTypes.active);
   }
 
   get hasCompletedItem() {
-    return this.todos.filter(todo => todo.isCompleted).length > 0;
+    return this.filterPipe.transform(this.todos, filterTypes.completed).length > 0;
   }
 
-  get size() {
-    return this.todos.length;
+  get activeSize() {
+    return this.filterPipe.transform(this.todos, filterTypes.active).length;
   }
 
 }

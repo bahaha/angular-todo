@@ -41,10 +41,10 @@ describe('TodoItemComponent', () => {
       expect(item.classList.contains('completed')).toBe(isCompleted);
     }
 
-    it('the text and a unchecked checkbox if the todo item is NOT completed', () => {
+    it('the type and a unchecked checkbox if the todo item is NOT completed', () => {
       assertElement({isCompleted: false});
     });
-    it('the text and a checked checkbox if the todo item is completed', () => {
+    it('the type and a checked checkbox if the todo item is completed', () => {
       assertElement({isCompleted: true});
     });
   });

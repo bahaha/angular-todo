@@ -12,27 +12,12 @@ footer {
     margin: 0 auto;
     text-align: center;
 
-    > div.filters {
-    }
     * {
       line-height: $footer_height;
     }
 
     @include screen_between(0, 360px) {
       @include flex-direction(column);
-      > div.filters {
-        order: 2;
-        @include display-flex();
-        @include flex-direction(column);
-        border-bottom: 1px solid #E2E2E2;
-        border-top: 1px solid #E2E2E2;
-        > a {
-          width: 100%;
-          &.active {
-            background-color: rgba(239, 213, 213, .5);
-          }
-        }
-      }
       > a.clear_complete {
         order: 3;
       }
@@ -50,17 +35,6 @@ footer {
           visibility: hidden;
           opacity: 0;
           z-index: -999;
-        }
-      }
-      > div.filters {
-        order: 2;
-        a {
-          margin: 0 10px;
-          &.active {
-            border: 1px solid #EFD5D5;
-            padding: 5px;
-            @include border-radius(3px);
-          }
         }
       }
     }

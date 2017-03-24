@@ -3,11 +3,12 @@
     [placeholder]="placeholder"
     [emptyTodos]="empty()"
     (submitTodo)="addTodo($event)"></todo-input>
-  <todo-list [todos]="todos"
+  <todo-list [todos]="todos | filter: filterType"
     (toggle)="toggleTodo($event)"></todo-list>
   <todo-footer
-    *ngIf="size !== 0"
-    [size]="size"
+    *ngIf="activeSize !== 0"
+    [size]="activeSize"
     [hasCompletedItem]="hasCompletedItem"
+    (changeFilterType)="changeFilterType($event)"
     (clearCompleted)="clearCompleted()"></todo-footer>
 </section>

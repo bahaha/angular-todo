@@ -36,6 +36,13 @@
   border-radius: $radius;
   background-clip: padding-box;  /* stops bg color from leaking outside the border: */
 }
+@mixin transition($transition...) {
+  -webkit-transition: $transition;
+  -moz-transition: $transition;
+  -ms-transition: $transition;
+  -o-transition: $transition;
+  transition: $transition;
+}
 @mixin screen_between($min: 0, $max: 0) {
   @if $max == 0 {
     @media screen and (min-width: $min) {

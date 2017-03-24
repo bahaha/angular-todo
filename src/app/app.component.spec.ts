@@ -9,6 +9,9 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {TodoListComponent} from "./todos/todo-list/todo-list.component";
 import {TodoItemComponent} from "./todos/todo-item/todo-item.component";
 import {TodoFooterComponent} from "./todos/todo-footer/todo-footer.component";
+import {FilterLinkComponent} from "./todos/filter-link/filter-link.component";
+import {LinkComponent} from "./todos/link/link.component";
+import {FilterPipe} from "./todos/todos-layout/filter.pipe";
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -18,10 +21,13 @@ describe('AppComponent', () => {
         AppComponent,
         HeaderComponent,
         TodosLayoutComponent,
+        FilterPipe,
         TodoInputComponent,
         TodoListComponent,
         TodoItemComponent,
         TodoFooterComponent,
+        FilterLinkComponent,
+        LinkComponent,
         FooterComponent,
       ],
     }).compileComponents();

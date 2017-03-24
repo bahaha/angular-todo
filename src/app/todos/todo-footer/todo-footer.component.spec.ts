@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TodoFooterComponent } from './todo-footer.component';
+import {FilterLinkComponent} from "../filter-link/filter-link.component";
+import {LinkComponent} from "../link/link.component";
 
 describe('TodoFooterComponent', () => {
   let component: TodoFooterComponent;
@@ -8,7 +10,11 @@ describe('TodoFooterComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TodoFooterComponent ]
+      declarations: [
+        TodoFooterComponent,
+        FilterLinkComponent,
+        LinkComponent
+      ]
     })
     .compileComponents();
   }));
@@ -24,14 +30,6 @@ describe('TodoFooterComponent', () => {
 
     const leftLabel = fixture.nativeElement.querySelector('div.item_left');
     expect(leftLabel.textContent).toContain('10');
-  });
-
-  it('should render filters link', () => {
-    fixture.detectChanges();
-    const filters = fixture.nativeElement.querySelector('div.filters');
-    expect(filters).toBeTruthy();
-    const links = filters.querySelectorAll('a');
-    expect(links.length).toBe(3);
   });
 
   describe('should render clear completed with', () => {

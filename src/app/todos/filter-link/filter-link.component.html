@@ -1,0 +1,7 @@
+<type-link
+  *ngFor="let filterType of types trackById"
+  [type]="filterType"
+  [isActive]="isActive(filterType)"
+  (changeFilterType)="changeFilterType($event)">
+  {{filterType}}
+</type-link>

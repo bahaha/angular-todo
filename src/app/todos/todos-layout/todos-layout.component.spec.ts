@@ -6,6 +6,9 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {TodoListComponent} from "../todo-list/todo-list.component";
 import {TodoItemComponent} from "../todo-item/todo-item.component";
 import {TodoFooterComponent} from "../todo-footer/todo-footer.component";
+import {FilterLinkComponent} from "../filter-link/filter-link.component";
+import {LinkComponent} from "../link/link.component";
+import {FilterPipe} from "./filter.pipe";
 
 describe('TodosLayoutComponent', () => {
   let component: TodosLayoutComponent;
@@ -16,10 +19,13 @@ describe('TodosLayoutComponent', () => {
       imports: [ ReactiveFormsModule ],
       declarations: [
         TodosLayoutComponent,
+        FilterPipe,
         TodoInputComponent,
         TodoListComponent,
         TodoItemComponent,
         TodoFooterComponent,
+        FilterLinkComponent,
+        LinkComponent,
       ]
     })
     .compileComponents();
@@ -30,15 +36,28 @@ describe('TodosLayoutComponent', () => {
     component = fixture.componentInstance;
   });
 
-  it('should contains input bar, todo items and functions', () => {
-    fixture.detectChanges();
-    const compiled = fixture.debugElement.nativeElement;
-    const inputBar = compiled.querySelector('todo-input');
-    const todoItems = compiled.querySelector('section');
-    const functions = compiled.querySelector('footer');
-    expect(inputBar).not.toBeNull();
-    expect(todoItems).not.toBeNull();
-    expect(functions).not.toBeNull();
+  describe('should render', () => {
+    it('input bar, todo items', () => {
+      fixture.detectChanges();
+      const compiled = fixture.debugElement.nativeElement;
+      const inputBar = compiled.querySelector('todo-input');
+      const todoItems = compiled.querySelector('todo-list');
+      expect(inputBar).not.toBeNull();
+      expect(todoItems).not.toBeNull();
+    });
+    it('footer functions if there are some todos', () => {
+      component.todos = [{text: '1', isCompleted: false}];
+      fixture.detectChanges();
+      const compiled = fixture.debugElement.nativeElement;
+      const functions = compiled.querySelector('todo-footer');
+      expect(functions).not.toBeNull();
+    });
+    it('NO footer functions if there is no todo', () => {
+      fixture.detectChanges();
+      const compiled = fixture.debugElement.nativeElement;
+      const functions = compiled.querySelector('todo-footer');
+      expect(functions).toBeNull();
+    });
   });
 
   describe('when invoking empty()', () => {

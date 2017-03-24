@@ -4,10 +4,6 @@
     <a class="clear_complete"
        [ngClass]="{'hidden': !hasCompletedItem}"
        (click)="onClearCompleted()">Clear completed</a>
-    <div class="filters">
-      <a class="active">All</a>
-      <a>Active</a>
-      <a>Completed</a>
-    </div>
+    <filter-link (changeFilter)="changeFilterType.emit($event)"></filter-link>
   </nav>
 </footer>
