@@ -1,12 +1,14 @@
 <section>
   <todo-input
     [placeholder]="placeholder"
-    [emptyTodos]="empty()"
+    [isEmpty]="empty()"
+    [isAllChecked]="isAllChecked"
+    (toggleAllTodos)="toggleAllTodos($event)"
     (submitTodo)="addTodo($event)"></todo-input>
   <todo-list [todos]="todos | filter: filterType"
     (toggle)="toggleTodo($event)"></todo-list>
   <todo-footer
-    *ngIf="activeSize !== 0"
+    *ngIf="!empty()"
     [size]="activeSize"
     [hasCompletedItem]="hasCompletedItem"
     (changeFilterType)="changeFilterType($event)"

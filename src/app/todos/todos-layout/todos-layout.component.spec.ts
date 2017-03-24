@@ -9,6 +9,8 @@ import {TodoFooterComponent} from "../todo-footer/todo-footer.component";
 import {FilterLinkComponent} from "../filter-link/filter-link.component";
 import {LinkComponent} from "../link/link.component";
 import {FilterPipe} from "./filter.pipe";
+import {Subscription} from "rxjs";
+import createSpyObj = jasmine.createSpyObj;
 
 describe('TodosLayoutComponent', () => {
   let component: TodosLayoutComponent;
@@ -94,6 +96,8 @@ describe('TodosLayoutComponent', () => {
       {id: 2, text: '3', isCompleted: true},
       {id: 3, text: '4', isCompleted: false},
     ];
+    component.isAllChecked = createSpyObj('isAllChecked', ['next']);
+
     component.toggleTodo(0);
     expect(component.todos[0].isCompleted).toBeTruthy();
 
@@ -114,4 +118,58 @@ describe('TodosLayoutComponent', () => {
     expect(component.todos.length).toBe(1);
     expect(component.todos).toEqual([todos[0]]);
   });
+
+  describe('toggle all todos', () => {
+    let sub: Subscription = null;
+    const assertItemsAndCheckedFlag = ({
+      todos,
+      expected,
+      expectedCheckedFlag
+    }) => {
+      component.todos = todos;
+      component.ngOnInit();
+
+      component.toggleAllTodos();
+      expect(component.todos).toEqual(expected);
+      expect(component.isAllChecked).toBe(expectedCheckedFlag);
+    };
+    it('should activate all todos when all todos is completed', () => {
+      const todos = [
+        {id: 0, text: '1', isCompleted: true},
+        {id: 1, text: '2', isCompleted: true},
+      ];
+      const allActiveTodoItem = todos.map(todo => Object.assign({}, todo, {isCompleted: false}));
+      assertItemsAndCheckedFlag({
+        todos,
+        expected: allActiveTodoItem,
+        expectedCheckedFlag: false
+      });
+    });
+    it('should complete all todos where some todos are not completed', () => {
+      const todos = [
+        {id: 0, text: '1', isCompleted: true},
+        {id: 1, text: '2', isCompleted: false},
+        {id: 2, text: '3', isCompleted: false},
+      ];
+      const allActiveTodoItem = todos.map(todo => Object.assign({}, todo, {isCompleted: true}));
+      assertItemsAndCheckedFlag({
+        todos,
+        expected: allActiveTodoItem,
+        expectedCheckedFlag: true
+      });
+    });
+    it('should complete all todos where ALL the todos are not completed', () => {
+      const todos = [
+        {id: 0, text: '1', isCompleted: false},
+        {id: 1, text: '2', isCompleted: false},
+        {id: 2, text: '3', isCompleted: false},
+      ];
+      const allActiveTodoItem = todos.map(todo => Object.assign({}, todo, {isCompleted: true}));
+      assertItemsAndCheckedFlag({
+        todos,
+        expected: allActiveTodoItem,
+        expectedCheckedFlag: true
+      });
+    });
+  })
 });

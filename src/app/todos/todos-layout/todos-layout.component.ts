@@ -1,6 +1,7 @@
 import {Component, OnInit, ChangeDetectionStrategy} from '@angular/core';
 import {Todo, Filters, filterTypes} from "../model";
 import {FilterPipe} from "./filter.pipe";
+import {BehaviorSubject, Observable} from "rxjs";
 
 @Component({
   selector: 'todos-layout',
@@ -13,10 +14,12 @@ export class TodosLayoutComponent implements OnInit {
   placeholder = 'What needs to be done?';
   todos: Todo[] = [];
   private filterType: Filters;
+  isAllChecked: boolean;
 
   constructor(private filterPipe: FilterPipe) { }
 
   ngOnInit() {
+    this.isAllChecked = false;
   }
 
   empty() {
@@ -31,12 +34,27 @@ export class TodosLayoutComponent implements OnInit {
     }];
   }
 
+  private updateTodo(item: Todo, partial: any): Todo {
+    return Object.assign({}, item, partial);
+  }
+
+  private isAllTodosChecked() {
+    return !this.empty() && this.activeSize === 0;
+  }
+
   toggleTodo(index: number) {
     const item = this.todos[index];
     this.todos = [...this.todos.slice(0, index),
-      Object.assign({}, item, {isCompleted: !item.isCompleted}),
+      this.updateTodo(item, {isCompleted: !item.isCompleted}),
       ...this.todos.slice(index + 1)
     ];
+    this.isAllChecked = this.isAllTodosChecked();
+  }
+
+  toggleAllTodos() {
+    const isAllChecked = this.isAllTodosChecked();
+    this.todos = this.todos.map(todo => this.updateTodo(todo, {isCompleted: !isAllChecked}));
+    this.isAllChecked = !isAllChecked;
   }
 
   changeFilterType(type: Filters) {

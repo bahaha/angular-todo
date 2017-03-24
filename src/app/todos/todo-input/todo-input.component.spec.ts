@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TodoInputComponent } from './todo-input.component';
-import {ReactiveFormsModule, FormControl} from "@angular/forms";
+import {ReactiveFormsModule, FormControl, FormBuilder} from "@angular/forms";
 
 describe('TodoInputComponent', () => {
   let component: TodoInputComponent;
@@ -34,13 +34,13 @@ describe('TodoInputComponent', () => {
 
   describe('should contain an icon in label', () => {
     it('should NOT have empty class if there are some todos', () => {
-      component.emptyTodos = false;
+      component.isEmpty = false;
       fixture.detectChanges();
       let label = fixture.debugElement.nativeElement.querySelector('label');
       expect(label.classList.contains('empty')).toBeFalsy();
     });
     it('should have empty class if no any todo items there', () => {
-      component.emptyTodos = true;
+      component.isEmpty = true;
       fixture.detectChanges();
       const label = fixture.debugElement.nativeElement.querySelector('label');
       expect(label.classList.contains('empty')).toBeTruthy();
@@ -73,4 +73,31 @@ describe('TodoInputComponent', () => {
     input.dispatchEvent(new KeyboardEvent('keyup', {key: 'Enter'}));
     expect(spy).toHaveBeenCalledWith(component.newTodo);
   });
+
+  describe('when user click on the icon', () => {
+    it('should trigger toggleAllTodos event ', () => {
+      component.isEmpty = true;
+      const spy = spyOn(component, 'toggleAll');
+      const label = fixture.nativeElement.querySelector('label');
+
+      fixture.detectChanges();
+      label.dispatchEvent(new Event('click'));
+      expect(spy).toHaveBeenCalled();
+    });
+    it('should raise toggleAllTodos event if there are some todos', () => {
+      component.isEmpty = false;
+      const spy = spyOn(component.toggleAllTodos, 'emit');
+
+      component.toggleAll();
+      expect(spy).toHaveBeenCalled();
+    });
+    it('should NOT raise toggleAllTodos event if there is no any todo', () => {
+      component.isEmpty = true;
+      const spy = spyOn(component.toggleAllTodos, 'emit');
+
+      component.toggleAll();
+      expect(spy).not.toHaveBeenCalled();
+    });
+  });
+
 });

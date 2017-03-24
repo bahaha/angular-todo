@@ -1,6 +1,7 @@
 <header>
   <label for="new_todo"
-          [ngClass]="{'empty': emptyTodos}">v</label>
+         (click)="toggleAll($event)"
+         [ngClass]="{'empty': isEmpty, 'strong': isAllChecked}">v</label>
   <input id="new_todo" type="text"
          placeholder="{{placeholder}}"
          [formControl]="newTodo"
