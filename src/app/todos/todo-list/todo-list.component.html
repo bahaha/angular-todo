@@ -1,0 +1,6 @@
+<section class="items">
+    <todo-item *ngFor="let todo of todos, let idx = index"
+               [index]="idx"
+               [item]="todo"
+              (toggle)="toggle.emit($event)"></todo-item>
+</section>

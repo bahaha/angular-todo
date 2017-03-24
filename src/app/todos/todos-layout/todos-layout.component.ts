@@ -25,4 +25,13 @@ export class TodosLayoutComponent implements OnInit {
       isCompleted: false,
     }];
   }
+
+  toggleTodo(index: number) {
+    const item = this.todos[index];
+    this.todos = [...this.todos.slice(0, index),
+      Object.assign({}, item, {isCompleted: !item.isCompleted}),
+      ...this.todos.slice(index + 1)
+    ];
+  }
+
 }

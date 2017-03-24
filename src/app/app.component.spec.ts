@@ -6,6 +6,8 @@ import {FooterComponent} from "./footer/footer.component";
 import {TodosLayoutComponent} from "./todos/todos-layout/todos-layout.component";
 import {TodoInputComponent} from "./todos/todo-input/todo-input.component";
 import {ReactiveFormsModule} from "@angular/forms";
+import {TodoListComponent} from "./todos/todo-list/todo-list.component";
+import {TodoItemComponent} from "./todos/todo-item/todo-item.component";
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -16,6 +18,8 @@ describe('AppComponent', () => {
         HeaderComponent,
         TodosLayoutComponent,
         TodoInputComponent,
+        TodoListComponent,
+        TodoItemComponent,
         FooterComponent,
       ],
     }).compileComponents();

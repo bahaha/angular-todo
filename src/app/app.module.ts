@@ -8,6 +8,8 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { TodosLayoutComponent } from './todos/todos-layout/todos-layout.component';
 import { TodoInputComponent } from './todos/todo-input/todo-input.component';
+import { TodoListComponent } from './todos/todo-list/todo-list.component';
+import { TodoItemComponent } from './todos/todo-item/todo-item.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,9 @@ import { TodoInputComponent } from './todos/todo-input/todo-input.component';
     HeaderComponent,
     FooterComponent,
     TodosLayoutComponent,
-    TodoInputComponent
+    TodoInputComponent,
+    TodoListComponent,
+    TodoItemComponent
   ],
   imports: [
     BrowserModule,

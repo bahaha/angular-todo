@@ -3,20 +3,8 @@
     [placeholder]="placeholder"
     [emptyTodos]="empty()"
     (submitTodo)="addTodo($event)"></todo-input>
-  <section class="items">
-    <div class="item">
-        <span class="checkbox_wrapper">
-          <input type="checkbox" />
-        </span>
-      <label>Taste Javascript</label>
-    </div>
-    <div class="item">
-        <span class="checkbox_wrapper">
-          <input type="checkbox" />
-        </span>
-      <label>Buy a unicorn</label>
-    </div>
-  </section>
+  <todo-list [todos]="todos"
+    (toggle)="toggleTodo($event)"></todo-list>
   <footer>
     <nav>
       <div class="item_left">1 items left</div>

@@ -3,6 +3,8 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { TodosLayoutComponent } from './todos-layout.component';
 import {TodoInputComponent} from "../todo-input/todo-input.component";
 import {ReactiveFormsModule} from "@angular/forms";
+import {TodoListComponent} from "../todo-list/todo-list.component";
+import {TodoItemComponent} from "../todo-item/todo-item.component";
 
 describe('TodosLayoutComponent', () => {
   let component: TodosLayoutComponent;
@@ -14,6 +16,8 @@ describe('TodosLayoutComponent', () => {
       declarations: [
         TodosLayoutComponent,
         TodoInputComponent,
+        TodoListComponent,
+        TodoItemComponent,
       ]
     })
     .compileComponents();
@@ -58,5 +62,22 @@ describe('TodosLayoutComponent', () => {
       isCompleted: false,
     });
     expect(component.empty()).toBeFalsy();
+  });
+
+  it('should toggle item completed state when receive toggleTodo event', () => {
+    component.todos = [
+      {text: '1', isCompleted: false},
+      {text: '2', isCompleted: false},
+      {text: '3', isCompleted: true},
+      {text: '4', isCompleted: false},
+    ];
+    component.toggleTodo(0);
+    expect(component.todos[0].isCompleted).toBeTruthy();
+
+    component.toggleTodo(2);
+    expect(component.todos[2].isCompleted).toBeFalsy();
+
+    component.toggleTodo(3);
+    expect(component.todos[3].isCompleted).toBeTruthy();
   });
 });

@@ -1,0 +1,41 @@
+@import "../../../mixins";
+@import "../../../variables";
+
+div.item {
+  @include display-flex();
+  height: $input_height;
+  line-height: $input_height;
+  background-color: #FFFFFF;
+  border-bottom: 1px solid $input_color;
+
+  span.checkbox_wrapper {
+    width: 50px;
+    input[type=checkbox] {
+      outline: none;
+      @include appearance(none);
+      &:after {
+        content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="-10 -18 100 135"><circle cx="50" cy="50" r="50" fill="none" stroke="#ededed" stroke-width="3"/></svg>')
+      }
+    }
+  }
+
+  > label {
+    @include display-flex();
+    flex: 1;
+    color: #4D4D4D;
+    @include word-break(break-all);
+    @include screen_between(0, 200px) {
+      width: 80px;
+      @include overflow-dots();
+    }
+  }
+
+  &.completed {
+    span.checkbox_wrapper input:after {
+      content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="-10 -18 100 135"><circle cx="50" cy="50" r="50" fill="none" stroke="#bddad5" stroke-width="3"/><path fill="#5dc2af" d="M72 25L42 71 27 56l-4 4 20 20 34-52z"/></svg>')
+    }
+    label {
+      text-decoration: line-through;
+    }
+  }
+}

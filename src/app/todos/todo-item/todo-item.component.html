@@ -1,0 +1,8 @@
+<div class="item"  [ngClass]="{'completed': item.isCompleted}">
+  <span class="checkbox_wrapper">
+    <input type="checkbox"
+           [attr.checked]="item.isCompleted ? 'checked': null"
+           (click)="toggleItemStatus()"/>
+  </span>
+  <label>{{item.text}}</label>
+</div>
