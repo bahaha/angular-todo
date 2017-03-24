@@ -16,6 +16,7 @@ export class TodoInputComponent implements OnInit{
   constructor(private formBuilder: FormBuilder) { }
 
   addTodo(todo: FormControl) {
+    if(todo.invalid) return;
     this.submitTodo.emit(todo.value);
     todo.setValue(null);
   }
