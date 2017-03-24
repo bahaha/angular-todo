@@ -10,6 +10,7 @@ import { TodosLayoutComponent } from './todos/todos-layout/todos-layout.componen
 import { TodoInputComponent } from './todos/todo-input/todo-input.component';
 import { TodoListComponent } from './todos/todo-list/todo-list.component';
 import { TodoItemComponent } from './todos/todo-item/todo-item.component';
+import { TodoFooterComponent } from './todos/todo-footer/todo-footer.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { TodoItemComponent } from './todos/todo-item/todo-item.component';
     TodosLayoutComponent,
     TodoInputComponent,
     TodoListComponent,
-    TodoItemComponent
+    TodoItemComponent,
+    TodoFooterComponent
   ],
   imports: [
     BrowserModule,

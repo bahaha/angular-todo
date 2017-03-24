@@ -1,0 +1,13 @@
+<footer>
+  <nav>
+    <div class="item_left"><strong>{{size}}</strong><span> items left</span></div>
+    <a class="clear_complete"
+       [ngClass]="{'hidden': !hasCompletedItem}"
+       (click)="onClearCompleted()">Clear completed</a>
+    <div class="filters">
+      <a class="active">All</a>
+      <a>Active</a>
+      <a>Completed</a>
+    </div>
+  </nav>
+</footer>

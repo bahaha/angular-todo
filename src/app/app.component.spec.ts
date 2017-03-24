@@ -8,6 +8,7 @@ import {TodoInputComponent} from "./todos/todo-input/todo-input.component";
 import {ReactiveFormsModule} from "@angular/forms";
 import {TodoListComponent} from "./todos/todo-list/todo-list.component";
 import {TodoItemComponent} from "./todos/todo-item/todo-item.component";
+import {TodoFooterComponent} from "./todos/todo-footer/todo-footer.component";
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -20,6 +21,7 @@ describe('AppComponent', () => {
         TodoInputComponent,
         TodoListComponent,
         TodoItemComponent,
+        TodoFooterComponent,
         FooterComponent,
       ],
     }).compileComponents();

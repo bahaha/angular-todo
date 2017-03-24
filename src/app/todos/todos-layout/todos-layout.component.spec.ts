@@ -5,6 +5,7 @@ import {TodoInputComponent} from "../todo-input/todo-input.component";
 import {ReactiveFormsModule} from "@angular/forms";
 import {TodoListComponent} from "../todo-list/todo-list.component";
 import {TodoItemComponent} from "../todo-item/todo-item.component";
+import {TodoFooterComponent} from "../todo-footer/todo-footer.component";
 
 describe('TodosLayoutComponent', () => {
   let component: TodosLayoutComponent;
@@ -18,6 +19,7 @@ describe('TodosLayoutComponent', () => {
         TodoInputComponent,
         TodoListComponent,
         TodoItemComponent,
+        TodoFooterComponent,
       ]
     })
     .compileComponents();
@@ -79,5 +81,16 @@ describe('TodosLayoutComponent', () => {
 
     component.toggleTodo(3);
     expect(component.todos[3].isCompleted).toBeTruthy();
+  });
+
+  it('should remove completed items when receive a clear completed event', () => {
+    const todos = [
+      {text: '1', isCompleted: false},
+      {text: '2', isCompleted: true},
+    ];
+    component.todos = todos;
+    component.clearCompleted();
+    expect(component.todos.length).toBe(1);
+    expect(component.todos).toEqual([todos[0]]);
   });
 });

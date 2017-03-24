@@ -1,5 +1,4 @@
 import {Component, Input, ChangeDetectionStrategy, EventEmitter, Output} from '@angular/core';
-import {Todo} from "../model";
 
 @Component({
   selector: 'todo-item',

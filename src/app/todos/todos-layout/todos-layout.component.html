@@ -5,15 +5,9 @@
     (submitTodo)="addTodo($event)"></todo-input>
   <todo-list [todos]="todos"
     (toggle)="toggleTodo($event)"></todo-list>
-  <footer>
-    <nav>
-      <div class="item_left">1 items left</div>
-      <a class="clear_complete">Clear completed</a>
-      <div class="filters">
-        <a class="active">All</a>
-        <a>Active</a>
-        <a>Completed</a>
-      </div>
-    </nav>
-  </footer>
+  <todo-footer
+    *ngIf="size !== 0"
+    [size]="size"
+    [hasCompletedItem]="hasCompletedItem"
+    (clearCompleted)="clearCompleted()"></todo-footer>
 </section>
