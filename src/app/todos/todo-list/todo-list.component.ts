@@ -10,5 +10,6 @@ import {Todo} from "../model";
 export class TodoListComponent {
   @Input() todos: Todo[];
   @Output() toggle: EventEmitter<number> = new EventEmitter();
+  @Output() removeTodo: EventEmitter<number> = new EventEmitter();
   byId = (index:number, item: Todo) => item.id;
 }

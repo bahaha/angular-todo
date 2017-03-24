@@ -108,6 +108,28 @@ describe('TodosLayoutComponent', () => {
     expect(component.todos[3].isCompleted).toBeTruthy();
   });
 
+  it('should remove a item when removeTodo with index', () => {
+    const todos = [
+      {id: 0, text: '1', isCompleted: false},
+      {id: 1, text: '2', isCompleted: true},
+    ];
+    component.todos = todos;
+    component.removeTodo(0);
+    expect(component.todos).toEqual([todos[1]]);
+  });
+  it('should trigger removeTodo when receive a removeTodo event from todo-item', () => {
+    const todos = [
+      {id: 0, text: '1', isCompleted: false},
+      {id: 1, text: '2', isCompleted: true},
+    ];
+    component.todos = todos;
+    const spy = spyOn(component, 'removeTodo');
+    fixture.detectChanges();
+    const removeLinks = fixture.nativeElement.querySelectorAll('todo-item a.destroy');
+    removeLinks[1].dispatchEvent(new Event('click'));
+    expect(spy).toHaveBeenCalledWith(1);
+  });
+
   it('should remove completed items when receive a clear completed event', () => {
     const todos = [
       {id: 0, text: '1', isCompleted: false},
@@ -171,5 +193,5 @@ describe('TodosLayoutComponent', () => {
         expectedCheckedFlag: true
       });
     });
-  })
+  });
 });

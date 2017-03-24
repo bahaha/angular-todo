@@ -51,6 +51,13 @@ export class TodosLayoutComponent implements OnInit {
     this.isAllChecked = this.isAllTodosChecked();
   }
 
+  removeTodo(index) {
+    this.todos = [
+      ...this.todos.slice(0, index),
+      ...this.todos.slice(index + 1)
+    ];
+  }
+
   toggleAllTodos() {
     const isAllChecked = this.isAllTodosChecked();
     this.todos = this.todos.map(todo => this.updateTodo(todo, {isCompleted: !isAllChecked}));

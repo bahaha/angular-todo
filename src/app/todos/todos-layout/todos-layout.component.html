@@ -6,6 +6,7 @@
     (toggleAllTodos)="toggleAllTodos($event)"
     (submitTodo)="addTodo($event)"></todo-input>
   <todo-list [todos]="todos | filter: filterType"
+    (removeTodo)="removeTodo($event)"
     (toggle)="toggleTodo($event)"></todo-list>
   <todo-footer
     *ngIf="!empty()"

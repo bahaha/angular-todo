@@ -3,5 +3,6 @@
                [index]="idx"
                [text]="todo.text"
                [isCompleted]="todo.isCompleted"
+              (remove)="removeTodo.emit($event)"
               (toggle)="toggle.emit($event)"></todo-item>
 </section>

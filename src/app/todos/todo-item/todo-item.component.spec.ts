@@ -30,7 +30,7 @@ describe('TodoItemComponent', () => {
       return fixture.debugElement.nativeElement;
     };
     const assertElement = ({isCompleted}) => {
-      const todo: Todo = {text: 'Buy a unicorn', isCompleted};
+      const todo: Todo = {id: 0, text: 'Buy a unicorn', isCompleted};
       const compiled = render(todo);
       const text: HTMLLabelElement = compiled.querySelector('label');
       const checkbox: HTMLInputElement = compiled.querySelector('input');
@@ -56,6 +56,25 @@ describe('TodoItemComponent', () => {
 
     component.toggleItemStatus(component.index);
     expect(itemIndex).toBe(component.index);
+  });
+
+  it('should raise remove event when removeItem', () => {
+    component.index = 0;
+    let itemIndex = null;
+    component.remove.subscribe(idx => itemIndex = idx);
+    component.removeItem(0);
+    expect(itemIndex).toBe(0);
+  });
+
+  it('should trigger removeItem when user click on the remove button', () => {
+    component.index = 0;
+    const spy = spyOn(component, 'removeItem');
+    fixture.detectChanges();
+    const removeLink = fixture.nativeElement.querySelector('a.destroy');
+    expect(removeLink).toBeTruthy();
+    removeLink.dispatchEvent(new Event('click'));
+
+    expect(spy).toHaveBeenCalledWith(0);
   });
 
 });

@@ -11,8 +11,13 @@ export class TodoItemComponent {
   @Input() text: string;
   @Input() isCompleted: boolean;
   @Output() toggle: EventEmitter<number> = new EventEmitter();
+  @Output() remove: EventEmitter<number> = new EventEmitter();
 
   toggleItemStatus(index) {
     this.toggle.emit(index);
+  }
+
+  removeItem(index) {
+    this.remove.emit(index);
   }
 }
